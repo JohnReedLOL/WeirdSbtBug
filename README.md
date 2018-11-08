@@ -20,7 +20,7 @@ Note that to enable login, I turned off the email security settings in Gmail via
 - 2-Step Verification: Off
 - Allow less secure apps: ON
 
-Do not use a dummy email account for anything other than automatically generated email on test failure.
+Do not use a dummy email account for anything other than automatically generating email on test failure.
 
 Note that if you know the network carrier (ex. AT&T, Sprint, T-Mobile, or Verizon) and the phone number associated with a cell phone, it is possible to send an email that gets received as a text message.
 
