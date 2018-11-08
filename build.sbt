@@ -1,8 +1,10 @@
-
 name := "EmailTestingBot"
 organization := "com.example"
 scalaVersion := "2.11.8"
 version      := "0.1.0-SNAPSHOT"
+
+// Can compile on multiple different Scala versions
+crossScalaVersions := Seq("2.11.8", "2.12.7", "2.13.0-M2")
 
 scalacOptions ++= Seq(
 "-Xlint",
@@ -28,16 +30,11 @@ scalacOptions ++= Seq(
 "-Xfatal-warnings"
 )
 
-wartremoverErrors ++= Warts.unsafe
-
 libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.0.5" % Test,
   // https://mvnrepository.com/artifact/org.apache.commons/commons-email
   "org.apache.commons" % "commons-email" % "1.5"
 )
-
-// provides re-start and re-stop sbt commands to start and stop the application in background.
-Revolver.settings
 
 // Now let's define some custom sbt settings and tasks
 // Note: A Setting just contains a value, a Task executes something and then returns a value
