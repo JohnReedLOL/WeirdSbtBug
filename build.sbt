@@ -39,6 +39,16 @@ libraryDependencies ++= Seq(
 // Now let's define some custom sbt settings and tasks
 // Note: A Setting just contains a value, a Task executes something and then returns a value
 
+val monitorTask = taskKey[Unit]("A task that gets the result of compile.")
+monitorTask in Scope.GlobalScope := {
+  // monitorTask dependencies:
+  val log = streams.value.log // streams task happens-before monitorTask
+  val compileResult = (compile.in(Compile)).result.value // compile task happens-before monitorTask
+  // directCause=Some(Compilation failed)
+  // ---- monitorTask begins here ----
+  log.warn(s"Compile: $compileResult !")
+}
+
 val runCanaryTask = taskKey[Unit]("A task that randomly decides to send an email or not. " +
   "It is meant to emulate a scenario where a test failure results in a notification.")
 
